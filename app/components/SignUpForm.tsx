@@ -27,6 +27,11 @@ export default function SignUpForm() {
 
     function handleSubmit(event: any) {
         event.preventDefault()
+        fetch(`https://hooks.zapier.com/hooks/catch/20140678/2hvgmw6/`, {
+            method: "POST",
+            body: JSON.stringify( signUpData ),
+        })
+            .catch(() => alert("There was an error, please try again"))
         console.log(signUpData)
         if (signUpData.password !== "") {
             if (signUpData.password === signUpData.confirmPassword && signUpData.password !== undefined) {
@@ -37,7 +42,7 @@ export default function SignUpForm() {
             } else console.log("Password is not match")
         } else console.log("Your password can't be empty")
 
-        
+
     }
 
 
